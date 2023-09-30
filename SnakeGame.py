@@ -50,13 +50,19 @@ Snake_Food.goto(0,150) # by default it is in the center of the screen
 def Move_Snake():
     if Snake_Head.direction == 'up':
         y = Snake_Head.ycor()
+#It then updates the snake's head's y-coordinate by adding 10 units to it. 
+#This effectively moves the snake's head 10 units upward on the screen, creating the illusion of the snake moving up.        
         Snake_Head.sety(y + 10)
+# checks if the snake is moving "down," and if so, it decreases the y-coordinate by 10 units (y - 10), 
+#moving the snake down.        
     if Snake_Head.direction == 'down':
         y = Snake_Head.ycor()
         Snake_Head.sety(y - 10)
+#checks if the snake is moving "left," and if so, it decreases the x-coordinate by 10 units (x - 10), moving the snake left.        
     if Snake_Head.direction == 'left':
         x = Snake_Head.xcor()
         Snake_Head.setx(x - 10)
+#checks if the snake is moving "right," and if so, it increases the x-coordinate by 10 units (x + 10), moving the snake right.        
     if Snake_Head.direction == 'right':
         x = Snake_Head.xcor()
         Snake_Head.setx(x + 10)
@@ -80,8 +86,13 @@ def go_right():
 
 def Food_Collision():
     if Snake_Head.distance(
-            Snake_Food) < 15:  # I choose 10 or 15 based on the incremental that we use to make the snakehead move
-        Snake_Food.goto(random.randint(-290, 290), random.randint(-249, 249))
+#If the distance is less than 15 units, it means the snake's head has collided with the food. 
+#The value of 15 is chosen as a threshold for collision detection based on the incremental movement of the snake's head (which is 10 units in the code).        
+        
+        Snake_Food) < 15:  # I choose 10 or 15 based on the incremental that we use to make the snakehead move
+#If a collision is detected, this line randomly relocates the food to a new position within the specified range. The random.randint() function is used to generate random x and y coordinates for the food, 
+#ensuring it appears somewhere on the game screen.            
+            Snake_Food.goto(random.randint(-290, 290), random.randint(-249, 249))
         """ here we use random numbers in order to move the snake food. that range because of the width and the height of the screen   """
         Snake_body = turtle.Turtle()  # after eating the food the snake became bigger so i create one more turtle and add all in list
         Snake_body.speed(0)
