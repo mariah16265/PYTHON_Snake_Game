@@ -2,11 +2,10 @@ import turtle
 import time
 import random
 
-
 delay = 0.1
-queue =[]
+queue = []
 
-#Calculate the score and high score
+# Calculate the score and high score
 pen = turtle.Turtle()
 pen.shape('square')
 pen.penup()
@@ -14,34 +13,34 @@ pen.speed(0)
 pen.color('White')
 
 pen.hideturtle()
-pen.goto(0,210)
-pen.write("Score: 0    High score: 0   ",align='center',font=('Arial',25,'bold'))
+pen.goto(0, 210)
+pen.write("Score: 0    High score: 0   ", align='center', font=('Arial', 25, 'bold'))
 
-
-# First , we create the snake window
+# First, we create the snake window
 window = turtle.Screen()
 window.bgcolor('Black')
 window.title('Snake_Game by Mariam Mostafa')
-window.setup(width=600,height=500)
+window.setup(width=600, height=500)
 window.tracer(0)
 
-#Next, we will create the snake head
+# Next, we will create the snake head
 Snake_Head = turtle.Turtle()
 Snake_Head.speed(0)
 Snake_Head.shape('circle')
 Snake_Head.color('Beige')
 Snake_Head.penup()
-Snake_Head.goto(0,0) # by default it is in the center of the screen
-Snake_Head.direction ='stop'
+Snake_Head.goto(0, 0)  # by default it is in the center of the screen
+Snake_Head.direction = 'stop'
 
-#Next, we will create the snake food
+# Next, we will create the snake food
 Snake_Food = turtle.Turtle()
 Snake_Food.speed(0)
 Snake_Food.shape('circle')
-
 Snake_Food.color('green')
 Snake_Food.penup()
-Snake_Food.goto(0,150) # by default it is in the center of the screen
+Snake_Food.goto(0, 150)  # by default it is in the center of the screen
+
+# Rest of your code...
 
 
 
@@ -85,16 +84,12 @@ def go_right():
 
 
 def Food_Collision():
-    if Snake_Head.distance(
-#If the distance is less than 15 units, it means the snake's head has collided with the food. 
-#The value of 15 is chosen as a threshold for collision detection based on the incremental movement of the snake's head (which is 10 units in the code).        
-        
-        Snake_Food) < 15:  # I choose 10 or 15 based on the incremental that we use to make the snakehead move
-#If a collision is detected, this line randomly relocates the food to a new position within the specified range. The random.randint() function is used to generate random x and y coordinates for the food, 
-#ensuring it appears somewhere on the game screen.            
-            Snake_Food.goto(random.randint(-290, 290), random.randint(-249, 249))
-        """ here we use random numbers in order to move the snake food. that range because of the width and the height of the screen   """
-        Snake_body = turtle.Turtle()  # after eating the food the snake became bigger so i create one more turtle and add all in list
+    if Snake_Head.distance(Snake_Food) < 15:  # I choose 10 or 15 based on the incremental that we use to make the snakehead move
+        # If a collision is detected, this line randomly relocates the food to a new position within the specified range.
+        # The random.randint() function is used to generate random x and y coordinates for the food, 
+        # ensuring it appears somewhere on the game screen.
+        Snake_Food.goto(random.randint(-290, 290), random.randint(-249, 249))
+        Snake_body = turtle.Turtle()  # after eating the food, the snake becomes bigger so I create one more turtle and add all in the list
         Snake_body.speed(0)
         Snake_body.shape('circle')
         Snake_body.color('yellow')
@@ -102,6 +97,7 @@ def Food_Collision():
         queue.append(Snake_body)
         return True
     return False
+
 
 
 def Border_Collision():
