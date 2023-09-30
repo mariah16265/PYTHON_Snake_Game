@@ -19,7 +19,7 @@ pen.write("Score: 0    High score: 0   ", align='center', font=('Arial', 25, 'bo
 # First, we create the snake window
 window = turtle.Screen()
 window.bgcolor('Black')
-window.title('Snake_Game by Mariam Mostafa')
+window.title('Snake_Game')
 window.setup(width=600, height=500)
 window.tracer(0)
 
